@@ -1,6 +1,8 @@
 name: df-parallel 
 
 channels:
+  - rapidsai
+  - nvidia
   - conda-forge
   - anaconda
 
@@ -16,6 +18,6 @@ dependencies:
   - ipywidgets=7.6.2
   - conda-pack=0.7.0
   - matplotlib=3.5.2
-  
-variables:
-  SPARK_CONF_DIR: ../conf
+  - faker=13.11.1
+  - cudf=22.04
+  - cudatoolkit=11.5

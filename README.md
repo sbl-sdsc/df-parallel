@@ -1,2 +1,1 @@
-# kg-bio
 # df-parallel
