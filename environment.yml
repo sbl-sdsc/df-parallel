@@ -1,5 +1,5 @@
-name: df-parallel 
-
+name: df-parallel
+  
 channels:
   - conda-forge
   - anaconda
@@ -7,15 +7,12 @@ channels:
 dependencies:
   - python=3.8
   - jupyterlab=3
-  - pandas=1.3.5
-  - pyarrow=7.0.0
-  - dask=2022.5.0
+  - requests
+  - pandas
+  - pyarrow
+  - dask
   - pyspark=3.2.1
   - openjdk=8.0.152
-  - requests
-  - ipywidgets=7.6.2
-  - conda-pack=0.7.0
-  - matplotlib=3.5.2
-  
+
 variables:
   SPARK_CONF_DIR: ../conf
