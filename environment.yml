@@ -8,11 +8,10 @@ dependencies:
   - python=3.8
   - jupyterlab=3
   - requests
-  - pandas
-  - pyarrow
   - dask
   - pyspark=3.2.1
   - openjdk=8.0.152
 
 variables:
+  # SPARK conf directory contains logging configuration
   SPARK_CONF_DIR: ../conf
