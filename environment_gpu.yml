@@ -1,4 +1,4 @@
-name: df-parallel
+name: df-parallel-gpu
   
 channels:
   - rapidsai
@@ -9,12 +9,11 @@ channels:
 dependencies:
   - python=3.8
   - jupyterlab=3
-  - requests
-  - dask
+  - dask=2022.5.1
   - pyspark=3.2.1
   - openjdk=8.0.152
   - cudf=22.04
-  - dask-cudf
+  - dask-cudf=22.04.00
   - cudatoolkit=11.5
 
 variables:

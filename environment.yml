@@ -7,8 +7,7 @@ channels:
 dependencies:
   - python=3.8
   - jupyterlab=3
-  - requests
-  - dask
+  - dask=2022.5.1
   - pyspark=3.2.1
   - openjdk=8.0.152
 
