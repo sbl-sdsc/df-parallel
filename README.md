@@ -24,6 +24,7 @@ After the dataset has been created, run the dataframe specific notebooks.
 Benchmark results for running on SDSC [Expanse GPU node](https://www.sdsc.edu/support/user_guides/expanse.html) with 10 CPU cores (Intel Xeon Gold 6248 2.5 GHz), 1 GPU (NVIDIA V100 SMX2), and 93 GB of memory (DDR4 DRAM).
 
 Datafile size: 21.4 GB (`ncopies=4`)
+In-memory size (Pandas): 62.4 GB
 
 | Dataframe Library | time (s) | Parallel | Out-of-core | CPU/GPU |
 | ------------------| -------- | -------- |---- | ------- |
