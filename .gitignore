@@ -110,8 +110,7 @@ config.yml
 # MacOS
 .DS_Store
 
-# kg-bio
+# df-parallel
 data
-cache
-crossreferences
+results
 notebooks/dask-worker-space
