@@ -39,7 +39,7 @@ jupyter lab
 ## Running Jupyter Lab on SDSC Expanse
 To launch Jupyter Lab on [Expanse](https://www.sdsc.edu/services/hpc/expanse/), use the [galyleo](https://github.com/mkandes/galyleo#galyleo) script. Specify your XSEDE account number with the --account option.
 
-Run on CPU:
+Run on GPU (required for cuDF and Dask-cuDF):
 ```
 galyleo launch --account <account_number> --partition shared --cpus 10 --memory 20 --time-limit 00:30:00 --conda-env df-parallel --conda-yml "${HOME}/df-parallel/environment.yml"  --mamba
 ```
@@ -47,6 +47,32 @@ galyleo launch --account <account_number> --partition shared --cpus 10 --memory 
 Run on GPU (required for cuDF and Dask-cuDF):
 ```
 galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 93 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment_gpu.yml" --mamba
+```
+
+## Creating a packed Conda Environment on SDSC Expanse
+If a Conda environment will be used frequently, a Conda environment can be created once and packed. A packed Conda Environment can be moved, from example for the home directory to a scratch directory on an Expanse compute node. A regular Conda Environment cannot be moved.
+
+Create a packed Conda environment for CPU:
+```
+pack.sh --account <account_number> --conda-env df-parallel --conda-yml df-parallel/environment.yml
+```
+This command will generate the packed Conda environment ```df-parallel.tar.gz```
+
+Create packed Conda environment for GPU:
+```
+pack.sh --account <account_number> --conda-env df-parallel-gpu --conda-yml df-parallel/environment_gpu.yml
+```
+This command will generate the packed Conda environment ```df-parallel_gpu.tar.gz```
+
+## Running Jupyter Lab with a packed Conda Environment on SDSC Expanse
+Run on CPU:
+```
+galyleo launch --account <account_number> --partition shared --cpus 10 --memory 20 --time-limit 00:30:00 --conda-env df-parallel --conda-pack "${HOME}/df-parallel.tar.gz"
+```
+
+Run on GPU (required for cuDF and Dask-cuDF):
+```
+galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 93 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-pack "${HOME}/df-parallel-gpu.tar.gz"
 ```
 
 ## Running the example notebooks
