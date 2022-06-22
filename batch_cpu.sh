@@ -13,7 +13,7 @@
 
 module purge
 module load slurm
-module load gpu 
+module load cpu 
 
 # specify name of Conda environment, path to environment.yml file, 
 # notebook directory and a results directory
