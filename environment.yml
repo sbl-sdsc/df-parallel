@@ -9,6 +9,7 @@ dependencies:
   - jupyterlab=3
   - dask=2022.3.0
   - pyspark=3.2.1
+  - papermill=2.3.4
   - openjdk=8.0.152
 
 variables:

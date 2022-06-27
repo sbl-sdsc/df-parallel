@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=10
 #SBATCH --gpus=1
-#SBATCH --mem=93G
+#SBATCH --mem=92G
 #SBATCH -t 00:15:00
 #SBATCH -J df-parallel-batch
 #SBATCH -o %j.%N.out

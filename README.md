@@ -58,7 +58,7 @@ galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --mem
 ## Creating a packed Conda Environment on SDSC Expanse
 If a Conda environment will be used frequently, a Conda environment can be created once and packed. A packed Conda Environment can be moved, from example for the home directory to a scratch directory on an Expanse compute node. A regular Conda Environment cannot be moved.
 
-Download script
+Download pack script
 ```
 wget https://raw.githubusercontent.com/pwrose/df-parallel/main/pack.sh
 chmod +x pack.sh
