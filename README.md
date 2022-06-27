@@ -18,7 +18,7 @@ It compares parallel and out-of-core (data that are too large to fit into the co
 1. Clone this git repository
 
 ```
-git clone https://github.com/pwrose/df-parallel.git
+git clone https://github.com/sbl-sdsc/df-parallel.git
 ```
 2. Create CONDA environment
 
@@ -60,7 +60,7 @@ If a Conda environment will be used frequently, a Conda environment can be creat
 
 Download pack script
 ```
-wget https://raw.githubusercontent.com/pwrose/df-parallel/main/pack.sh
+wget https://raw.githubusercontent.com/sbl-sdsc/df-parallel/main/pack.sh
 chmod +x pack.sh
 ```
 
