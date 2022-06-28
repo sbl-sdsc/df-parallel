@@ -15,6 +15,13 @@ It compares parallel and out-of-core (data that are too large to fit into the co
 [1] Pandas can read data in chunks, but they have to be processed independenly.
 
 ## Running Jupyter Lab locally
+------
+Prerequisites: Miniconda3 (light-weight, preferred) or Anaconda3 and Mamba
+
+* Install [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
+* Install Mamba: ```conda install mamba -n base -c conda-forge```
+------
+
 1. Clone this git repository
 
 ```
@@ -23,7 +30,7 @@ git clone https://github.com/sbl-sdsc/df-parallel.git
 2. Create CONDA environment
 
 ```
-conda env create -f df-parallel/environment.yml
+mamba env create -f df-parallel/environment.yml
 ```
 3. Activate the CONDA environment
 
@@ -42,15 +49,27 @@ jupyter lab
 conda deactivate
 ```
 
+------
+> To remove the CONDA environment, run ```conda env remove -n df-parallel```
+------
+
+
 ## Running Jupyter Lab on SDSC Expanse
 To launch Jupyter Lab on [Expanse](https://www.sdsc.edu/services/hpc/expanse/), use the [galyleo](https://github.com/mkandes/galyleo#galyleo) script. Specify your XSEDE account number with the --account option.
 
-Run on CPU (Pandas, Dask, and Spark dataframes):
+1. Clone this git repository
+
+```
+git clone https://github.com/sbl-sdsc/df-parallel.git
+```
+
+
+2a. Run on CPU (Pandas, Dask, and Spark dataframes):
 ```
 galyleo launch --account <account_number> --partition shared --cpus 10 --memory 20 --time-limit 00:30:00 --conda-env df-parallel --conda-yml "${HOME}/df-parallel/environment.yml"  --mamba
 ```
 
-Run on GPU (required for cuDF and Dask-cuDF dataframes):
+2b. Run on GPU (required for cuDF and Dask-cuDF dataframes):
 ```
 galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment_gpu.yml" --mamba
 ```
