@@ -71,7 +71,7 @@ galyleo launch --account <account_number> --partition shared --cpus 10 --memory 
 
 2b. Run on GPU (required for cuDF and Dask-cuDF dataframes):
 ```
-galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment_gpu.yml" --mamba
+galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment-gpu.yml" --mamba
 ```
 
 ## Creating a packed Conda Environment on SDSC Expanse
