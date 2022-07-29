@@ -7,19 +7,24 @@ channels:
   - anaconda
 
 dependencies:
-  - python=3.8
+  - python=3.9
   - jupyterlab=3
   - ipywidgets
   - matplotlib=3.5.2
   - seaborn=0.11.2
   - papermill=2.3.4
-  - dask=2022.7.1
-  - pyspark=3.2.1
-  - openjdk=8.0.152
-  - cudf=22.04
-  - dask-cudf=22.04.00
-  - cudatoolkit=11.5
+  - dask=2022.05.2
+  - pyspark=3.3.0
+  - pyarrow=7.0.0
+  - openjdk=11.0.15
+  - cudf=22.06
+  - dask-cudf=22.06.00
+  - cudatoolkit=11.6
+
 
 variables:
-  # SPARK conf directory contains logging configuration
+  # SPARK conf directory with logging configuration
   SPARK_CONF_DIR: ../conf
+  SPARK_DRIVER_MEMORY: 16G
+  SPARK_DRIVER_MAXRESULTSIZE: 4G
+  SPARK_WORKER_MEMORY: 4G
