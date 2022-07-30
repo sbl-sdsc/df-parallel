@@ -20,7 +20,7 @@ module load gpu
 # notebook directory and a results directory
 CONDA_ENV=df-parallel-gpu
 REPO_DIR=${HOME}/df-parallel
-CONDA_YML="${REPO_DIR}/environment_gpu.yml"
+CONDA_YML="${REPO_DIR}/environment-gpu.yml"
 NOTEBOOK_DIR="${REPO_DIR}/notebooks"
 RESULT_DIR="${REPO_DIR}/results"
 
