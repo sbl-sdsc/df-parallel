@@ -7,7 +7,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --gpus=1
 #SBATCH --mem=92G
-#SBATCH -t 01:00:00
+#SBATCH -t 04:00:00
 #SBATCH -o %j.%N.out
 #SBATCH -e %j.%N.err
 #SBATCH --export=ALL
@@ -57,7 +57,7 @@ declare -a dataframes=("Dask" "Spark" "DaskCuda")
 for n_copies in "${copies[@]}"
 do
   # download dataset
-  papermill 1-DownloadData.ipynb "${RESULT_DIR}"/1-DownloadData.ipynb -p $n_copies
+  papermill 1-DownloadData.ipynb "${RESULT_DIR}"/1-DownloadData.ipynb -p n_copies $n_copies
   # convert datafile to parquet format
   papermill 1a-Csv2Parquet.ipynb "${RESULT_DIR}"/1a-Csv2Parquet.ipynb
 
