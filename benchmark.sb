@@ -51,18 +51,24 @@ cd ${NOTEBOOK_DIR}
 mkdir -p "${RESULT_DIR}"
 
 ## number of copies of dataset for benchmark 
-declare -a arr=("1" "4" "8")
+declare -a copies=("1" "4" "8")
+declare -a dataframes=("Dask" "Spark" "DaskCuda")
 ## now loop through the above array
-for n_copies in "${arr[@]}"
+for n_copies in "${copies[@]}"
 do
   # download dataset
   papermill 1-DownloadData.ipynb "${RESULT_DIR}"/1-DownloadData.ipynb -p $n_copies
   # convert datafile to parquet format
   papermill 1a-Csv2Parquet.ipynb "${RESULT_DIR}"/1a-Csv2Parquet.ipynb
+
   # run benchmarks
   n_cores=8
-  file_format=csv
-  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p n_cores $n_cores -p file_format $file_format
-  file_format=parquet
-  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p n_cores $n_cores -p file_format $file_format
+  for dataframe in "${dataframes[@]}"
+  do
+    file_format=csv
+    papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p n_cores $n_cores -p file_format  $file_format -p dataframe $dataframe
+    file_format=parquet
+    papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p n_cores $n_cores -p file_format $file_format -p dataframe $dataframe
+  done
 done
+
