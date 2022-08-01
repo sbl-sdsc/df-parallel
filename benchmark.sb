@@ -1,15 +1,15 @@
 #!/bin/bash
 # Batch script to run Jupyter Notebooks on Expanse GPU node.
-#SBATCH -A <account_number> 
+#SBATCH --account=sds184 
+#SBATCH -t 08:00:00
 #SBATCH --job-name=df-parallel-benchmark
-#SBATCH -p gpu-shared
+#SBATCH --partition=gpu-shared
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=16
 #SBATCH --gpus=1
 #SBATCH --mem=92G
-#SBATCH -t 04:00:00
-#SBATCH -o %j.%N.out
-#SBATCH -e %j.%N.err
+#SBATCH --output df-parallel-benchmark.%j.%N.out
+#SBATCH --error df-parallel-benchmark.%j.%N.err
 #SBATCH --export=ALL
 
 module purge
@@ -43,7 +43,7 @@ source "${CONDA_INSTALL_PATH}/etc/profile.d/conda.sh"
 conda install mamba -n base -c conda-forge
 mamba env create -f ${CONDA_YML}
 
-# run notebooks using papermill
+# setup papermill
 conda activate ${CONDA_ENV}
 conda install -c conda-forge papermill
 
@@ -51,9 +51,10 @@ cd ${NOTEBOOK_DIR}
 mkdir -p "${RESULT_DIR}"
 
 ## number of copies of dataset for benchmark 
-declare -a copies=("1" "4" "8")
+declare -a copies=("1" "2" "4" "8" "16")
+
 declare -a dataframes=("Dask" "Spark" "DaskCuda")
-## now loop through the above array
+
 for n_copies in "${copies[@]}"
 do
   # download dataset
@@ -62,7 +63,7 @@ do
   papermill 1a-Csv2Parquet.ipynb "${RESULT_DIR}"/1a-Csv2Parquet.ipynb
 
   # run benchmarks
-  n_cores=8
+  n_cores=16
   for dataframe in "${dataframes[@]}"
   do
     file_format=csv
