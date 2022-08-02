@@ -12,7 +12,7 @@ It compares parallel and out-of-core (data that are too large to fit into the co
 | cuDF        | yes     | no  | GPU |
 | Dask-cuDF   | yes     | yes | GPU |
 
-[1] Pandas can read data in chunks, but they have to be processed independenly.
+[1] Pandas can read data in chunks, but they have to be processed independently.
 
 ## Running Jupyter Lab locally
 ------
