@@ -1,13 +1,13 @@
 #!/bin/bash
 # Batch script to run Jupyter Notebooks on Expanse GPU node.
-#SBATCH --account=sds184 
-#SBATCH -t 08:00:00
-#SBATCH --job-name=df-parallel-benchmark
+#SBATCH --account=crl155
+#SBATCH --time=08:00:00
 #SBATCH --partition=gpu-shared
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --gpus=1
 #SBATCH --mem=92G
+#SBATCH --job-name=df-parallel-benchmark
 #SBATCH --output df-parallel-benchmark.%j.%N.out
 #SBATCH --error df-parallel-benchmark.%j.%N.err
 #SBATCH --export=ALL
@@ -50,16 +50,17 @@ conda install -c conda-forge papermill
 cd ${NOTEBOOK_DIR}
 mkdir -p "${RESULT_DIR}"
 
-## number of copies of dataset for benchmark 
+# number of copies of dataset for benchmark 
 declare -a copies=("1" "2" "4" "8" "16")
 
+# dataframes using for benchmark
 declare -a dataframes=("Dask" "Spark" "DaskCuda")
 
 for n_copies in "${copies[@]}"
 do
-  # download dataset
+  # download dataset in csv format
   papermill 1-DownloadData.ipynb "${RESULT_DIR}"/1-DownloadData.ipynb -p n_copies $n_copies
-  # convert datafile to parquet format
+  # convert dataset to parquet format
   papermill 1a-Csv2Parquet.ipynb "${RESULT_DIR}"/1a-Csv2Parquet.ipynb
 
   # run benchmarks
