@@ -62,8 +62,15 @@ do
   papermill 1-DownloadData.ipynb "${RESULT_DIR}"/1-DownloadData.ipynb -p n_copies $n_copies
   # convert dataset to parquet format
   papermill 1a-Csv2Parquet.ipynb "${RESULT_DIR}"/1a-Csv2Parquet.ipynb
-
+  
   # run benchmarks
+  
+  # Pandas and Cuda dataframes don't utilize multiple cores
+  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p file_format  csv -p dataframe Pandas
+  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p file_format  parquet -p dataframe Pandas
+  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p file_format  csv -p dataframe Cuda
+  papermill 7-ParallelEfficiency.ipynb "${RESULT_DIR}"/7-ParallelEfficiency.ipynb -p file_format  parquet -p dataframe Cuda
+
   n_cores=16
   for dataframe in "${dataframes[@]}"
   do
