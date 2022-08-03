@@ -16,6 +16,7 @@ dependencies:
   - dask=2022.05.2
   - pyspark=3.3.0
   - pyarrow=7.0.0
+  - fastparquet=0.8.1
   - openjdk=11.0.15
   - cudf=22.06
   - dask-cudf=22.06.00
