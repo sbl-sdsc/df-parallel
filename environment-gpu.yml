@@ -1,6 +1,8 @@
-name: df-parallel
+name: df-parallel-gpu
   
 channels:
+  - rapidsai
+  - nvidia
   - conda-forge
   - anaconda
 
@@ -16,9 +18,13 @@ dependencies:
   - pyarrow=7.0.0
   - fastparquet=0.8.1
   - openjdk=11.0.15
+  - cudf=22.06
+  - dask-cudf=22.06.00
+  - cudatoolkit=11.6
+
 
 variables:
-  # SPARK conf directory contains logging configuration
+  # SPARK conf directory with logging configuration
   SPARK_CONF_DIR: ../conf
   SPARK_DRIVER_MEMORY: 16G
   SPARK_DRIVER_MAXRESULTSIZE: 4G

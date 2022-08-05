@@ -12,7 +12,7 @@ It compares parallel and out-of-core (data that are too large to fit into the co
 | cuDF        | yes     | no  | GPU |
 | Dask-cuDF   | yes     | yes | GPU |
 
-[1] Pandas can read data in chunks, but they have to be processed independenly.
+[1] Pandas can read data in chunks, but they have to be processed independently.
 
 ## Running Jupyter Lab locally
 ------
@@ -71,7 +71,7 @@ galyleo launch --account <account_number> --partition shared --cpus 10 --memory 
 
 2b. Run on GPU (required for cuDF and Dask-cuDF dataframes):
 ```
-galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment_gpu.yml" --mamba
+galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment-gpu.yml" --mamba
 ```
 
 ## Creating a packed Conda Environment on SDSC Expanse
@@ -112,15 +112,18 @@ After Jupyter Lab has been launched, run the Notebook [1-DownloadData.ipynb](1-D
 ## Test results (not representative)
 Results for running on SDSC [Expanse GPU node](https://www.sdsc.edu/support/user_guides/expanse.html) with 10 CPU cores (Intel Xeon Gold 6248 2.5 GHz), 1 GPU (NVIDIA V100 SMX2), and 92 GB of memory (DDR4 DRAM), local storage (1.6 TB Samsung PM1745b NVMe PCIe SSD).
 
-Datafile size: 21.4 GB (`ncopies=4`)
-In-memory size (Pandas): 62.4 GB
+Datafile size (gene_info.tsv): 
 
-| Dataframe Library | time (s) | Parallel | Out-of-core | CPU/GPU |
-| ------------------| -------- | -------- |---- | ------- |
-| Pandas            | 222.4    | no       | no  | CPU |
-| Dask              | 42.1     | yes      | yes | CPU |
-| Spark             | 31.2     | yes      | yes | CPU |
-| cuDF              | -- [2]   |yes       | no  | GPU |
-| Dask-cuDF         | 11.9     |yes       | yes | GPU |
+* Dataset 1: 5.4 GB (18 GB in Pandas)
+* Dataset 2: 21.4 GB (4 x Dataset 1) (62.4 GB in Pandas)
+* Dataset 3: 43.7 GB (8 x Dataset 1)
+
+| Dataframe Library | time(5.4 GB) (s) | time(21.4 GB) (s) | time(43.7 GB) (s) | Parallel | Out-of-core | CPU/GPU |
+| -----------------| ----------------: | ----------------: | ----------------: |--------- | ----------- | ------- |
+| Pandas            | 56.3 |222.4   | -- [2] | no       | no  | CPU |
+| Dask              | 15.7 | 42.1   | 121.8  | yes      | yes | CPU |
+| Spark             | 14.2 | 31.2   |  56.5  | yes      | yes | CPU |
+| cuDF              |  3.2 | -- [2] | -- [2] | yes      | no  | GPU |
+| Dask-cuDF         |  7.3 | 11.9   | 19.0   | yes      | yes | GPU |
 
 [2] out of memory
