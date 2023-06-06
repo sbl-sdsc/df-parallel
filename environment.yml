@@ -3,6 +3,7 @@ name: df-parallel
 channels:
   - conda-forge
   - anaconda
+
 dependencies:
   - python=3.10
   - jupyterlab=4.0.1

@@ -21,7 +21,6 @@ dependencies:
   - dask-cudf=23.04.01
   - cudatoolkit=11.8
 
-
 variables:
   # SPARK conf directory with logging configuration
   SPARK_CONF_DIR: ../conf
