@@ -2,25 +2,24 @@ name: df-parallel-gpu
   
 channels:
   - rapidsai
-  - nvidia
   - conda-forge
+  - nvidia
   - anaconda
 
 dependencies:
-  - python=3.9
-  - jupyterlab=3
-  - ipywidgets=7.7.1
-  - matplotlib=3.5.2
-  - seaborn=0.11.2
+  - python=3.10
+  - jupyterlab=4.0.1
+  - ipywidgets=8.0.6
+  - matplotlib=3.7.1
+  - seaborn=0.12.2
   - papermill=2.3.4
-  - numpy=1.22
-  - dask=2022.7.1
-  - pyspark=3.3.0
-  - pyarrow=8.0.1
-  - openjdk=11.0.15
-  - cudf=22.08
-  - dask-cudf=22.08.00
-  - cudatoolkit=11.7
+  - dask=2023.3.2
+  - pyspark=3.4.0
+  - pyarrow=10.0.1
+  - openjdk=17.0.3
+  - cudf=23.04
+  - dask-cudf=23.04.01
+  - cudatoolkit=11.8
 
 
 variables:
