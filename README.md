@@ -106,6 +106,11 @@ Run on GPU (required for cuDF and Dask-cuDF):
 galyleo launch --account <account_number> --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 00:30:00 --conda-env df-parallel-gpu --conda-pack "${HOME}/df-parallel-gpu.tar.gz"
 ```
 
+## Running Jupyter Lab on Google Colab
+[![DownloadData](https://img.shields.io/badge/Launch-DownloadData-blue)](http://colab.research.google.com/github/pwrose/df-parallel/blob/master/notebooks/1-DownloadData_colab.ipynb)
+
+[![PandasDataframe](https://img.shields.io/badge/Launch-PandasDataframe-blue)](http://colab.research.google.com/github/pwrose/df-parallel/blob/master/notebooks/2-PandasDataframe_colab.ipynb)
+
 ## Running the example notebooks
 After Jupyter Lab has been launched, run the Notebook [1-DownloadData.ipynb](1-DownloadData.ipynb) to create a dataset. In this notebook, specify the number of copies (`ncopies`) to be made from the orignal dataset to increase its size. By default, a single copy (~5.4 GB) is created. After the dataset has been created, run the dataframe specific notebooks. Note, the cuDF and Dask-cuDF dataframe libraries require a GPU.
 
