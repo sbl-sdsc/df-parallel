@@ -9,9 +9,9 @@
 #SBATCH --ntasks-per-node=10
 #SBATCH --gpus=1
 #SBATCH --mem=92G
-#SBATCH --job-name=df-parallel-benchmark
-#SBATCH --output df-parallel-benchmark.%j.%N.out
-#SBATCH --error df-parallel-benchmark.%j.%N.err
+#SBATCH --job-name=df-parallel
+#SBATCH --output df-parallel.%j.%N.out
+#SBATCH --error df-parallel.%j.%N.err
 #SBATCH --export=ALL
 
 # set gpu environment
