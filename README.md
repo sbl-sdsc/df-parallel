@@ -4,13 +4,13 @@ This repo demonstrates how to setup CONDA environments for popular Dataframe lib
 
 It compares parallel and out-of-core (data that are too large to fit into the computer's memory) reading and processing of large datasets on CPU and GPU.
 
-| Dataframe Library | Parallel | Out-of-core | CPU/GPU |
-| ------------------| -------- | ----------- | ------- |
-| Pandas      | no      | no [1]  | CPU |
-| Dask        | yes     | yes | CPU |
-| Spark       | yes     | yes | CPU |
-| cuDF        | yes     | no  | GPU |
-| Dask-cuDF   | yes     | yes | GPU |
+| Dataframe Library | Parallel | Out-of-core | CPU/GPU | Evaluation |
+| ------------------| -------- | ----------- | ------- | ---------- |
+| Pandas      | no      | no [1]  | CPU | eager |
+| Dask        | yes     | yes | CPU | lazy |
+| Spark       | yes     | yes | CPU | lazy |
+| cuDF        | yes     | no  | GPU | eager |
+| Dask-cuDF   | yes     | yes | GPU | lazy |
 
 [1] Pandas can read data in chunks, but they have to be processed independently.
 
