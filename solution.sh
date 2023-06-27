@@ -1,9 +1,9 @@
 #!/bin/bash
 # Batch script to run Jupyter Notebooks on Expanse GPU node.
 #SBATCH --account=gue998
-#SBATCH --reservation=ciml2023gpu
+#SBATCH --reservation=CIML23GPU
 #SBATCH --qos=gpu-shared-eot
-#SBATCH --time=00:30:00
+#SBATCH --time=00:15:00
 #SBATCH --partition=gpu-shared
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=10
@@ -27,6 +27,7 @@ CONDA_YML="${REPO_DIR}/environment-gpu.yml"
 NOTEBOOK_DIR="${REPO_DIR}/notebooks"
 RESULT_DIR="${REPO_DIR}/results"
 
+# create path to node local scratch directory
 export LOCAL_SCRATCH_DIR="/scratch/${USER}/job_${SLURM_JOB_ID}"
 
 # download miniconds3
@@ -46,16 +47,13 @@ source "${CONDA_INSTALL_PATH}/etc/profile.d/conda.sh"
 conda install mamba -n base -c conda-forge
 mamba env create -f ${CONDA_YML}
 
-# setup papermill
+# activate conda environment
 conda activate ${CONDA_ENV}
 
 cd ${NOTEBOOK_DIR}
 mkdir -p "${RESULT_DIR}"
 
-# dataframes using for benchmark
-declare -a dataframes=("Dask" "Spark" "DaskCuda")
-
-# download dataset in csv format
+# download dataset
 papermill 1-FetchDataCIML2023.ipynb "${RESULT_DIR}"/1-FetchDataCIML2023.ipynb
 
 # run the following notebooks using the parquet file format as input:
