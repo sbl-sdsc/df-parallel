@@ -1,7 +1,7 @@
 #!/bin/bash
 # Batch script to run Jupyter Notebooks on Expanse GPU node.
 #SBATCH --account=gue998
-#SBATCH --reservation=CIML23GPU
+#SBATCH --reservation=CIML23GPU2
 #SBATCH --qos=gpu-shared-eot
 #SBATCH --time=00:15:00
 #SBATCH --partition=gpu-shared
