@@ -25,7 +25,7 @@ CONDA_ENV=df-parallel-gpu
 REPO_DIR=${HOME}/df-parallel
 CONDA_YML="${REPO_DIR}/environment-gpu.yml"
 NOTEBOOK_DIR="${REPO_DIR}/notebooks"
-RESULT_DIR="${REPO_DIR}/results"
+RESULT_DIR="${NOTEBOOK_DIR}/results"
 
 # create path to node local scratch directory
 export LOCAL_SCRATCH_DIR="/scratch/${USER}/job_${SLURM_JOB_ID}"
