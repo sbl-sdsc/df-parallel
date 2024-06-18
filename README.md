@@ -55,7 +55,7 @@ conda deactivate
 
 
 ## Running Jupyter Lab on SDSC Expanse
-To launch Jupyter Lab on [Expanse](https://www.sdsc.edu/services/hpc/expanse/), use the [galyleo](https://github.com/mkandes/galyleo#galyleo) script. Specify your ACCESS account number with the --account option. If you do not have an ACCESS acount and allocation on Expanse, you can apply through NSF’s [ACCESS program](https://allocations.access-ci.org/prepare-requests-overview) or for a trial allocation, contact <consult@sdsc.edu>.
+To launch Jupyter Lab on [Expanse](https://www.sdsc.edu/services/hpc/expanse/), use the [galyleo](https://github.com/mkandes/galyleo#galyleo) script. Specify your ACCESS account number with the --account option. If you do not have an ACCESS acount and allocation on Expanse, you can apply through NSF’s [ACCESS program](https://allocations.access-ci.org/get-your-first-project) or for a trial allocation, contact <consult@sdsc.edu>.
 
 1. Clone this git repository
 
