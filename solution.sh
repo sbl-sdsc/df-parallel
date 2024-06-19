@@ -55,9 +55,9 @@ rm -rf "${RESULT_DIR}"
 mkdir -p "${RESULT_DIR}"
 
 # download dataset
-papermill 1-FetchDataCIML2023.ipynb "${RESULT_DIR}"/1-FetchDataSummerInstitute.ipynb
+papermill 1-FetchLocalData.ipynb "${RESULT_DIR}"/1-FetchLocalData.ipynb
 
-# run the following notebooks using the parquet file format as input:
+# run the following notebooks using the "parquet" file format as input:
 
 # 2-PandasDataframe.ipynb
 papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_parquet.ipynb -p file_format parquet
@@ -67,8 +67,21 @@ papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_parquet.ipynb -p
 papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_parquet.ipynb -p file_format parquet
 # 5-CudaDataframe.ipynb
 papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_parquet.ipynb -p file_format parquet
-# 6-DaskCudaDataframe.ipynb
-papermill 6-DaskCudaDataframe.ipynb "${RESULT_DIR}"/6-DaskCudaDataframe_parquet.ipynb -p file_format parquet
+
+
+# run the following notebooks using the "csv" file format as input:
+
+# 2-PandasDataframe.ipynb
+papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_parquet.ipynb -p file_format parquet
+# 3-DaskDataframe.ipynb
+papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_parquet.ipynb -p file_format parquet
+# 4-SparkDataframe.ipynb
+papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_parquet.ipynb -p file_format parquet
+# 5-CudaDataframe.ipynb
+papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_parquet.ipynb -p file_format parquet
+
+# concatenate the result files and sort by runtime (second column) numerically (-k2n)
+sort -t, -k2n *.csv|tail -9 > benchmark.csv
 
 # deactivate the conda environment
 conda deactivate
