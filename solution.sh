@@ -55,7 +55,7 @@ rm -rf "${RESULT_DIR}"
 mkdir -p "${RESULT_DIR}"
 
 # download dataset
-papermill 1-FetchDataCIML2023.ipynb "${RESULT_DIR}"/1-FetchDataCIML2023.ipynb
+papermill 1-FetchDataCIML2023.ipynb "${RESULT_DIR}"/1-FetchDataSummerInstitute.ipynb
 
 # run the following notebooks using the parquet file format as input:
 
