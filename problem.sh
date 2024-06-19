@@ -82,6 +82,7 @@ papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_csv.ipynb
 
 
 # concatenate the result files and sort by runtime (second column) numerically (-k2n)
+cd ${RESULT_DIR}
 sort -t, -k2n *.csv|tail -9 > benchmark.csv
 
 # deactivate the conda environment
