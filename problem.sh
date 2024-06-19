@@ -55,9 +55,9 @@ rm -rf "${RESULT_DIR}"
 mkdir -p "${RESULT_DIR}"
 
 # download dataset
-papermill 1-FetchDataSummerInstitute.ipynb "${RESULT_DIR}"/1-FetchDataSummerInstitute.ipynb
+papermill 1-FetchLocalData.ipynb "${RESULT_DIR}"/1-FetchLocalData.ipynb
 
-# run the following notebooks using the parquet file format as input:
+# TODO: run the following notebooks using the "parquet" file format as input. The executed notebooks should go into the "${RESULT_DIR}" directory as shown above.
 
 # 2-PandasDataframe.ipynb
 papermill <your_code_here>
@@ -67,8 +67,21 @@ papermill <your_code_here>
 papermill <your_code_here>
 # 5-CudaDataframe.ipynb
 papermill <your_code_here>
-# 6-DaskCudaDataframe.ipynb
+
+# TODO: run the following notebooks using the "csv" file format as input:
+
+# 2-PandasDataframe.ipynb
 papermill <your_code_here>
+# 3-DaskDataframe.ipynb
+papermill <your_code_here>
+# 4-SparkDataframe.ipynb
+papermill <your_code_here>
+# 5-CudaDataframe.ipynb
+papermill <your_code_here>
+
+
+# concatenate the result files and sort by runtime (second column) numerically (-k2n)
+sort -t, -k2n *.csv|tail -9 > benchmark.csv
 
 # deactivate the conda environment
 conda deactivate
