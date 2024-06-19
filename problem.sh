@@ -57,27 +57,28 @@ mkdir -p "${RESULT_DIR}"
 # download dataset
 papermill 1-FetchLocalData.ipynb "${RESULT_DIR}"/1-FetchLocalData.ipynb
 
-# TODO: run the following notebooks using the "parquet" file format as input. The executed notebooks should go into the "${RESULT_DIR}" directory as shown above.
+# TODO: complete the following command lines to pass in the parquet file format as a parameter
 
 # 2-PandasDataframe.ipynb
-papermill <your_code_here>
+papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_parquet.ipynb
 # 3-DaskDataframe.ipynb
-papermill <your_code_here>
+papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_parquet.ipynb
 # 4-SparkDataframe.ipynb
-papermill <your_code_here>
+papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_parquet.ipynb
 # 5-CudaDataframe.ipynb
-papermill <your_code_here>
+papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_parquet.ipynb
 
-# TODO: run the following notebooks using the "csv" file format as input:
+
+# TODO: complete the following command lines to pass in the csv file format as a parameter
 
 # 2-PandasDataframe.ipynb
-papermill <your_code_here>
+papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_csv.ipynb
 # 3-DaskDataframe.ipynb
-papermill <your_code_here>
+papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_csv.ipynb
 # 4-SparkDataframe.ipynb
-papermill <your_code_here>
+papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_csv.ipynb
 # 5-CudaDataframe.ipynb
-papermill <your_code_here>
+papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_csv.ipynb
 
 
 # concatenate the result files and sort by runtime (second column) numerically (-k2n)

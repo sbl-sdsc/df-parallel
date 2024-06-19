@@ -72,13 +72,13 @@ papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_parquet.ipynb -p
 # run the following notebooks using the "csv" file format as input:
 
 # 2-PandasDataframe.ipynb
-papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_parquet.ipynb -p file_format parquet
+papermill 2-PandasDataframe.ipynb "${RESULT_DIR}"/2-PandasDataframe_csv.ipynb -p file_format csv
 # 3-DaskDataframe.ipynb
-papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_parquet.ipynb -p file_format parquet
+papermill 3-DaskDataframe.ipynb "${RESULT_DIR}"/3-DaskDataframe_csv.ipynb -p file_format csv
 # 4-SparkDataframe.ipynb
-papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_parquet.ipynb -p file_format parquet
+papermill 4-SparkDataframe.ipynb "${RESULT_DIR}"/4-SparkDataframe_csv.ipynb -p file_format csv
 # 5-CudaDataframe.ipynb
-papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_parquet.ipynb -p file_format parquet
+papermill 5-CudaDataframe.ipynb "${RESULT_DIR}"/5-CudaDataframe_csv.ipynb -p file_format csv
 
 # concatenate the result files and sort by runtime (second column) numerically (-k2n)
 sort -t, -k2n *.csv|tail -9 > benchmark.csv
