@@ -8,6 +8,8 @@ channels:
 
 dependencies:
   - python=3.10
+  - jupyterlab=4.0.1
+  - dask=2023.3.2
   - cudf=23.04
   - dask-cudf=23.04.01
   - cudatoolkit=11.8
