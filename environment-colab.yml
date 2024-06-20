@@ -1,0 +1,13 @@
+name: df-parallel-colab
+  
+channels:
+  - rapidsai
+  - conda-forge
+  - nvidia
+  - anaconda
+
+dependencies:
+  - python=3.10
+  - cudf=23.04
+  - dask-cudf=23.04.01
+  - cudatoolkit=11.8
