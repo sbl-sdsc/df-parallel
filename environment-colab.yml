@@ -7,9 +7,10 @@ channels:
   - anaconda
 
 dependencies:
-  - python=3.10
-  - jupyterlab=4.0.1
-  - dask=2023.3.2
-  - cudf=23.04
-  - dask-cudf=23.04.01
-  - cudatoolkit=11.8
+  - python=3.11
+  - jupyterlab=4.2.2
+#  - dask=2023.3.2
+  - dask=2024.6.0
+  - cudf=2024.06.00
+  - dask-cudf
+#  - cudatoolkit=11.8
