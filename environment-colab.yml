@@ -10,7 +10,7 @@ dependencies:
   - python=3.11
   - jupyterlab=4.2.2
 #  - dask=2023.3.2
-  - dask=2024.6.0
-  - cudf=2024.06.00
+  - dask
+  - cudf
   - dask-cudf
 #  - cudatoolkit=11.8
